@@ -18,9 +18,10 @@ You have a basic understanding about:
 
 ## Actors
 
-Throughout this document, I willverbosely clarify which is the `ssh server` and `ssh client`.
+Throughout this document, I will verbosely clarify which is the `ssh server` and `ssh client`.
 
-Every web article and tutorial fucks up on which is which. They should be purged.
+Every web article and tutorial fucks up on which is which.
+All those web article should be purged.
 
 Here I will use the following term.
 
@@ -99,13 +100,13 @@ sequenceDiagram
 ### Install
 
 ```bash
-# on client
+# on client (apt)
 sudo apt update
 sudo apt install openssh-client
 ```
 
 ```bash
-# on host
+# on host (apt)
 sudo apt update
 sudo apt install openssh-server
 ```
@@ -113,7 +114,7 @@ sudo apt install openssh-server
 ### Firewall
 
 ```bash
-# on both host and client
+# on both host and client (ufw)
 sudo ufw enable
 sudo ufw allow ssh
 sudo ufw reload
@@ -122,7 +123,7 @@ sudo ufw reload
 ### Enable SSH server
 
 ```bash
-# on host
+# on host (systemd)
 sudo systemctl status ssh
 sudo systemctl start ssh
 sudo systemctl enable ssh
@@ -132,7 +133,7 @@ sudo systemctl enable ssh
 
 ```bash
 # on client
-# check if server is alive
+# check if server is alive (depends on ICMP settings)
 ping 192.168.10.100
 ```
 
@@ -156,7 +157,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/id_kfc_ed25519
 
 For security, it's better to passphrase.
 
-Passphrase doesn't have to do anything with ssh.
+`Passphrase` itself have nothing to do with ssh.
 It's required for anything trying to access the private key.
 
 #### Send public key to host
@@ -215,7 +216,7 @@ If not sure which port to use see [Wikipedia](https://en.wikipedia.org/wiki/List
 When changing port, don't forget to change firewall settings on client.
 
 ```bash
-# on client
+# on client (ufw)
 sudo ufw allow 51515
 sudo ufw status numbered # check number of rule added above
 sudo ufw delete <rule number of allow 51515>
@@ -263,6 +264,3 @@ Now you can connect with:
 # same as ssh -i ~/.ssh/id_kfc_ed25519 -p 51515 chicken@192.168.10.100
 ssh kfc
 ```
-
-
-
