@@ -57,7 +57,7 @@ sudo apt install mc
 ssh-keygen -p -f <path/to/eprivate key>
 ```
 
-## BkSp/Tab/etc. keys don't work after SSH connection
+## BkSp, Tab, etc. keys don't work on SSH host shell
 
 I experienced this on: SSH client with foot -> OpenSuse SSH server
 
