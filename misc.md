@@ -56,3 +56,20 @@ sudo apt install mc
 ```bash
 ssh-keygen -p -f <path/to/eprivate key>
 ```
+
+## BkSp/Tab/etc. keys don't work after SSH connection
+
+I experienced this on: SSH client with foot -> OpenSuse SSH server
+
+This is because the stty settings that are usually handled automaticaly didn't work for some reason.
+
+See [stackoverflow](https://unix.stackexchange.com/questions/43103/backspace-tab-not-working-in-terminal-using-ssh).
+
+If setting environment variable `$TERM` worked, add the following to `~/.bashrc`/`~/.zshrc`.
+
+```
+# add to ~/.zshrc
+if [[ -n $SSH_CONNECTION ]]; then
+    export TERM='vt100'
+fi
+```
