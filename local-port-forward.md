@@ -7,35 +7,34 @@ Create SSH tunnel to forward: **client port** -> **host port**
 
 ## Cheat Sheet
 
-From client: `ssh -L [<client address>:]<client port>:<host address>:<host port> <host user>@<host address>`
+Port forward `<host address>:<host port>` -> `<client address>:<client port>`
+
+From client shell: `ssh -L [<client address>:]<client port>:<host address (seen from host)>:<host port> <host user>@<host address>`
+
+`<host address (seen from host)>` is usually `localhost`.
+In this usage, `localhost` is **NOT the client address**.
+This part is passed to the host, which is perceived as the host's `localhost`; i.e. the host address.
 
 ## Use Cases
 
 - vnc
-- web GUI
-- Jupyter, RStudio server
+- Web Apps over HTTP/HTTPS
+  - Web GUI (Proxmox, TrueNAS, etc.)
+  - Jupyter
+  - RStudio server
 
-## Example: Jupyter Server
-
-For using HTTP/HTTPS, see [Jupyter server docs](https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html)
-
+## Example: Web server over 
 
 - `host`: chicken@192.168.10.100
   - ssh port: 51515
-  - forward destination port: 8888
+  - webapp port: 8888
+- `jump server`: chick@192.168.10.20
+  - ssh port: 51516
+  - bind port: 3838
 - `client`: egg@192.168.10.10
-  - ssh port: 51515
-  - forward source port: 6080
+  - bind port: 3000
 
 
-```bash
-# on host
-pip install jupyterlab
-```
-
-```bash
-# on clietnt
-```
 
 ## Example: TrueNAS web-GUI
 
@@ -45,7 +44,6 @@ pip install jupyterlab
   - ssh port: 51515
   - forward destination port: 5903 
 - `client`: egg@192.168.10.10
-  - ssh port: 51515
   - forward source port: 6080
 
 ```mermaid
