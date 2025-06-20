@@ -34,6 +34,13 @@ This part is passed to the host, which is perceived as the host's `localhost`; i
 - `client`: egg@192.168.10.10
   - bind port: 3000
 
+```mermaid
+sequenceDiagram
+  client ->> jump-server: nc 192.168.10.20 3838
+  client ->> +jump-server: ssh -L 3000:192.168.10.20:3838 chick@192.168.10.20
+  client -->> jump-server: client:3000 -> host:3838
+```
+
 
 
 ## Example: TrueNAS web-GUI
