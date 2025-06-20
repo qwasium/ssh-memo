@@ -25,7 +25,7 @@ This part is passed to the host, which is perceived as the host's `localhost`; i
 
 ## Example: Web server over 
 
-- `host`: chicken@192.168.10.100
+- `web server`: chicken@192.168.10.100
   - ssh port: 51515
   - webapp port: 8888
 - `jump server`: chick@192.168.10.20
@@ -38,7 +38,12 @@ This part is passed to the host, which is perceived as the host's `localhost`; i
 sequenceDiagram
   client ->> jump-server: nc 192.168.10.20 3838
   client ->> +jump-server: ssh -L 3000:192.168.10.20:3838 chick@192.168.10.20
-  client -->> jump-server: client:3000 -> host:3838
+  client -->> jump-server: client:3000 -> jump server:3838
+  jump-server ->> web-server: nc 192.168.10.100 8888
+  jump-server ->> +web-server: ssh -L 3838:192.168.10.100:8888 chicken@192.168.10.100
+  jump-server --> web-server: jump server:3838 -> web server:8888
+  web-server ->> -jump-server: exit
+  jump-server ->> -client: exit
 ```
 
 
