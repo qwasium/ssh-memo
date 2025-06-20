@@ -17,13 +17,15 @@ This part is passed to the host, which is perceived as the host's `localhost`; i
 
 ## Use Cases
 
-- vnc
-- Web Apps over HTTP/HTTPS
-  - Web GUI (Proxmox, TrueNAS, etc.)
-  - Jupyter
-  - RStudio server
+When we want to access a certain port on a server, but the server is behind a firewall.
 
-## Example: Web server over 
+- VNC
+- Web Apps over HTTP/HTTPS 
+  - Web GUI (Proxmox, TrueNAS, etc.)
+  - Jupyter Lab
+  - RStudio Server
+
+## Example: Tunnelling a web app (HTTP/HTTPS) over a jump server
 
 - `web server`: chicken@192.168.10.100
   - ssh port: 51515
@@ -40,8 +42,8 @@ I assumed anyone who will be reading this should know this so if you're not sure
 ```mermaid
 sequenceDiagram
   client ->> jump-server: nc 192.168.10.20 3838
+  Note right of jump-server: Check port for forwarding
   client ->> +jump-server: ssh -L 3000:localhost.20:3838 chick@192.168.10.20
-  jump-server ->> web-server: nc 192.168.10.100 8888
   jump-server ->> +web-server: ssh -L 3838:localhost:8888 chicken@192.168.10.100
   Note over client,web-server: WEB BROWSER (client:3000) -> (jump server:3838) -> (web server:8888) WEB APPLICATION
   web-server ->> -jump-server: exit
@@ -49,8 +51,6 @@ sequenceDiagram
 ```
 
 
-
-## Example: TrueNAS web-GUI
 
 ## Example: noVNC
 
