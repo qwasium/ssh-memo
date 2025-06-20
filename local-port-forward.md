@@ -36,13 +36,11 @@ This part is passed to the host, which is perceived as the host's `localhost`; i
 
 ```mermaid
 sequenceDiagram
-  autonumber
   client ->> jump-server: nc 192.168.10.20 3838
   client ->> +jump-server: ssh -L 3000:192.168.10.20:3838 chick@192.168.10.20
   jump-server ->> web-server: nc 192.168.10.100 8888
   jump-server ->> +web-server: ssh -L 3838:192.168.10.100:8888 chicken@192.168.10.100
-  client -->> jump-server: client:3000 -> jump server:3838
-  jump-server -->> web-server: jump server:3838 -> web server:8888
+  client -->> jump-server: client:3000 -> jump server:3838  -->> web-server: jump server:3838 -> web server:8888
   client -->> web-server: client:3000 -> jump server:3838 -> web server:8888
   web-server ->> -jump-server: exit
   jump-server ->> -client: exit
