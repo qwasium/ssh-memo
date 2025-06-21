@@ -246,7 +246,7 @@ chmod 600 ~/.ssh/config
 ```
 
 Add the following.
-Options for ssh_config can be used, so see `man ssh` for details.
+Options for ssh_config can be used, so see `man ssh` and `man ssh_config` for details.
 
 ```bash
 # add to ~/.ssh/config
