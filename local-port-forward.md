@@ -36,15 +36,15 @@ When we want to access a certain port on a server, but the server is behind a fi
 - `client`: egg@192.168.10.10
   - bind port: 3000
  
-NOTE: `-p` (ssh server port) and `-i` (identity file) are absent in below, but it is needed.
+NOTE: `-i` (identity file) are absent in below, but it is needed.
 I assumed anyone who will be reading this should know this so if you're not sure, start from the basics.
 
 ```mermaid
 sequenceDiagram
   client ->> jump-server: nc 192.168.10.20 3838
   Note right of jump-server: Check port for forwarding
-  client ->> +jump-server: ssh -L 3000:localhost.20:3838 chick@192.168.10.20
-  jump-server ->> +web-server: ssh -L 3838:localhost:8888 chicken@192.168.10.100
+  client ->> +jump-server: ssh -L 3000:localhost.20:3838 chick@192.168.10.20 -p 51516
+  jump-server ->> +web-server: ssh -L 3838:localhost:8888 chicken@192.168.10.100 -p 51515
   Note over client,web-server: WEB BROWSER (client:3000) -> (jump server:3838) -> (web server:8888) WEB APPLICATION
   web-server ->> -jump-server: exit
   jump-server ->> -client: exit
