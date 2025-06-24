@@ -53,7 +53,8 @@ sequenceDiagram
   jump-server ->> -client: exit
 
   client ->> +web-server: ssh -L 3000:localhost:8888 -J chick@192.168.10.20:51516 chicken@192.168.10.100 -p 51515
-  web-server -->> -client: exit
+  Note over client,web-server: WEB BROWSER (client:3000) -> (jump server:3838) -> (web server:8888) WEB APPLICATION
+  web-server ->> -client: exit
 
 ```
 
