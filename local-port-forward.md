@@ -1,7 +1,8 @@
 # `ssh -L`
 
 - `-L`/`LocalForward`: Local port forwarding
-- `-W`/`ProxyJump`: Direct TCP stream
+- `W`: TCP stream
+- `J`: ProxyJump
 
 See `man ssh` for details.
 
@@ -50,6 +51,10 @@ sequenceDiagram
   Note over client,web-server: WEB BROWSER (client:3000) -> (jump server:3838) -> (web server:8888) WEB APPLICATION
   web-server ->> -jump-server: exit
   jump-server ->> -client: exit
+
+  client ->> +web-server: ssh -L 3000:localhost:8888 -J chick@192.168.10.20:51516 chicken@192.168.10.100 -p 51515
+  web-server -->> -client: exit
+
 ```
 
 
