@@ -50,6 +50,11 @@ sudo apt install mc
 
 ## SSH to Link Local Machine
 
+You need a way to resolve the host address (link/internet layer).
+
+SSH is an application layer protocol.
+
+No magic here.
 
 ## Change/Remove Passphrase from Private Key
 
@@ -73,3 +78,4 @@ if [[ -n $SSH_CONNECTION ]]; then
     export TERM='vt100'
 fi
 ```
+
