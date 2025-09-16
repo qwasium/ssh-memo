@@ -2,7 +2,6 @@
 
 - `-L`/`LocalForward`: Local port forwarding
 - `W`: TCP stream
-- `J`: ProxyJump
 
 See `man ssh` for details.
 
