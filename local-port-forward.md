@@ -12,7 +12,9 @@ Create SSH tunnel to forward: **client port** -> **host port**
 
 Port forward `<host address>:<host port>` -> `<client address>:<client port>`
 
-From client shell: `ssh -L [<client address>:]<client port>:<host address (seen from host)>:<host port> <host user>@<host address>`
+From client shell:
+
+`ssh -L [<client address>:]<client port>:<host address (seen from host)>:<host port> <host user>@<host address>`
 
 `<host address (seen from host)>` is usually `localhost`.
 In this usage, `localhost` is **NOT the client address**.
