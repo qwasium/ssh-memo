@@ -8,6 +8,8 @@ When we want to access a certain server, but the server is behind a firewall/NAT
 
 ## Cheat Sheet
 
+From client shell:
+
 `ssh <to final destination> -J <to intermediate destination>`
 
 `ssh <final destination user>@<final destination address> -p <final destination port> -J <intermediate user>@<intermediate address>:<intermediate port>`
