@@ -35,7 +35,7 @@ Key pairs
 ```mermaid
 sequenceDiagram
   client ->> +jumpbox: ssh chick@192.168.10.20 -p 51516 -i ~/.ssh/id_c-jumpbox_ed25519
-  jump-box ->> +server: ssh chicken@192.168.10.100 -p 51515 -i ~/.ssh/id_j-server_ed25519
+  jumpbox ->> +server: ssh chicken@192.168.10.100 -p 51515 -i ~/.ssh/id_j-server_ed25519
   Note over client,web-server: Doing normal SSH 2 times
   server ->> -jumpbox: exit
   jumpbox ->> -client: exit
