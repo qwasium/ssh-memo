@@ -36,12 +36,12 @@ Key pairs
 sequenceDiagram
   client ->> +jumpbox: ssh chick@192.168.10.20 -p 51516 -i ~/.ssh/id_c-jumpbox_ed25519
   jumpbox ->> +server: ssh chicken@192.168.10.100 -p 51515 -i ~/.ssh/id_j-server_ed25519
-  Note over client,server: "client -> jumbbox + jumpbox -> server"
+  Note over client,server: "client -> jumbbox" + "jumpbox -> server"
   server ->> -jumpbox: exit
   jumpbox ->> -client: exit
 
   client ->> +server: ssh chicken@192.168.10.100 -p 51515 -i ~/.ssh/id_c-server_ed25519 -J "chick@192.168.10.20:51516 -i ~/.ssh/id_c-jumpbox_ed25519"
-  Note over client,server: "client -> jumpbox + client -> server"
+  Note over client,server: "client -> jumpbox" + "client -> server"
   server ->> -client: exit
 ```
 
