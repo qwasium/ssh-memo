@@ -1,6 +1,9 @@
 # `ssh -J`
 
-- ProxyJump
+- `-J`: ProxyJump
+- `-W`: ProxyCommand/TCP stream
+
+`-J` is a wrapper of `-W`, introduced since OpenSSH 7.3.
 
 ## Use Cases
 
