@@ -1,7 +1,8 @@
 # `ssh -L`
 
 - `-L`/`LocalForward`: Local port forwarding
-- `W`: TCP stream
+- `-W`: TCP stream
+- `-J`: ProxyJump; often used together
 
 See `man ssh` for details.
 
