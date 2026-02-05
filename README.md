@@ -204,6 +204,8 @@ Must be changed:
 
 - `PermitRootLogin no`
 - `PaawordAuthentication no`
+- `ChallengeResponseAuthentication no`
+- `KbdInteractiveAuthentication no`
 - `ForwardX11Trusted no`
 
 Better to be changed:
@@ -264,3 +266,4 @@ Now you can connect with:
 # same as ssh -i ~/.ssh/id_kfc_ed25519 -p 51515 chicken@192.168.10.100
 ssh kfc
 ```
+
