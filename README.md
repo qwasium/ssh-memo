@@ -55,17 +55,17 @@ Just use `tmux`.
 
 Not all. Just the common ones.
 
-### Host
+### Host (Server)
 
-- `~/.ssh/authorized_keys`: ssh client public keys
-- `/etc/ssh/`: ssh server config dire
-  - `/sshd_config`: ssh server config
+- `~/.ssh/authorized_keys`: ssh client public keys that are allowed to connect
+- `/etc/ssh/`: ssh server config directory
+  - `/sshd_config`: ssh server config file
   - ssh server keys are here too
 
 ### Client
 
-- `~/.ssh/`: ssh client config
-  - `config`: set alias for running ssh command
+- `~/.ssh/`: ssh client config directory
+  - `config`: ssh client config file (set alias for running ssh command)
   - `known_hosts`: ssh server public keys
   - ssh client keys are here too
 
@@ -178,7 +178,7 @@ From client: `ssh -i <private key> <host user>@<host address>`
 ssh -i ~/.ssh/id_kfc_ed25519 chicken@192.168.10.100
 ```
 
-### Change SSH config
+### Change SSHD config
 
 Change SSH settings in SSH server.
 
@@ -188,8 +188,15 @@ The settings are in `/etc/ssh/sshd_config`. (ssh*d* for daemon)
 
 As stated [above](#), be careful not to get locked out of the server when changing settings.
 
-- Use `ssh -o` to individually change item
-- Directly edit `sshd_config`
+SSH server configs are a *first match wins* strategy. 
+
+1. Use `sshd -o` to individually change item. (you probably won't use this)
+2. Directly edit `/etc/ssh/sshd_config`
+3. Add a config file to `/etc/ssh/sshd_config.d/` (sourced in /etc/ssh/sshd_config)
+
+Usually, it is best practice to add your own config file since `/etc/ssh/sshd_config` is maintained by the package maintainers.
+But for this tutorial, let's make things simple by directly editing `/etc/ssh/sshd_config`. 
+In production, consider adding your own config file to `/etc/ssh/sshd_config.d/`
 
 Before editing, create backup of config.
 
@@ -239,6 +246,8 @@ ssh -i ~/.ssh/id_kfc_ed25519 -p 51515 chicken@192.168.10.100
 ### Edit `~/.ssh/config`
 
 The ssh command is long so create an alias in `~/.ssh/config`.
+
+This is your ssh client config.
 
 If `~/.ssh/config` doesn't exist, create.
 
