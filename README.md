@@ -124,9 +124,9 @@ sudo ufw reload
 
 ```bash
 # on host (systemd)
-sudo systemctl status ssh
-sudo systemctl start ssh
-sudo systemctl enable ssh
+sudo systemctl status sshd
+sudo systemctl start sshd
+sudo systemctl enable sshd
 ```
 
 ### Initial Connection
