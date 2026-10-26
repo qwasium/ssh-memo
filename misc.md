@@ -1,4 +1,18 @@
-# Miscellaneous Tasks
+# Miscellaneous Notes
+
+## Permissions for `~/.ssh`
+
+```text
+~/.ssh/                         700  drwx------
+├── authorized_keys              600  -rw-------
+├── config                       600  -rw-------
+├── known_hosts                  600  -rw-------
+├── id_ed25519                   600  -rw-------
+├── id_ed25519.pub               644  -rw-r--r--
+├── id_rsa                       600  -rw-------
+├── id_rsa.pub                   644  -rw-r--r--
+└── environment                  600  -rw-------
+```
 
 ## Secure Copy
 
